@@ -284,3 +284,141 @@ Extract ZIP archive...
 Writing language pl into translations folder
 [piotr@piotr-pc sulu-hello-world]$ 
 ```
+
+## Setup the Database
+
+https://docs.sulu.io/en/2.1/book/getting-started.html#setup-the-database
+
+```
+[piotr@piotr-pc sulu-hello-world]$ ./bin/adminconsole sulu:build dev
+Build Targets
+=============
+
++---+--------------------+-----------------------------------------------------------------------+
+| # | Builder            | Deps                                                                  |
++---+--------------------+-----------------------------------------------------------------------+
+| 0 | database           |                                                                       |
+| 1 | phpcr              | database                                                              |
+| 2 | phpcr_migrations   | phpcr                                                                 |
+| 3 | fixtures           | database, phpcr                                                       |
+| 4 | user               | fixtures, database                                                    |
+| 5 | system_collections | database, fixtures                                                    |
+| 6 | dev                | database, fixtures, phpcr, user, phpcr_migrations, system_collections |
++---+--------------------+-----------------------------------------------------------------------+
+
+Options:
+
+  - nodeps: false
+  - destroy: false
+  - help: false
+  - quiet: false
+  - verbose: false
+  - version: false
+  - ansi: false
+  - no-ansi: false
+  - no-interaction: false
+  - env: 'dev'
+  - no-debug: false
+
+Look good? (y)y
+
+Executing builders
+==================
+
+Target: database
+
+    doctrine:schema:update  ({"--force":true})
+    
+        
+                 Updating database schema...
+        
+                     213 queries were executed
+        
+                                                                                                                                        
+         [OK] Database schema updated successfully!                                                                             
+                                                                                                                                
+        
+                
+Target: phpcr
+
+    sulu:document:initialize
+    
+        sulu_document_manager.initializer.workspace
+          [+] workspace: "default"
+          [+] workspace: "default_live"
+        sulu_document_manager.initializer.root_path_purge_initializer
+          [ ] Purging workspaces
+        sulu_page.document_manager.content_initializer
+          content namespaces:
+          [+] sulu:http://sulu.io/phpcr
+          [+] sec:http://sulu.io/phpcr/sec
+          [+] settings:http://sulu.io/phpcr/settings
+          [+] i18n:http://sulu.io/phpcr/locale
+          content node types:
+          [*] sulu:base
+          [*] sulu:path
+          [*] sulu:content
+          [*] sulu:snippet
+          [*] sulu:page
+          [*] sulu:home
+          content namespaces:
+          [ ] sulu:http://sulu.io/phpcr
+          [ ] sec:http://sulu.io/phpcr/sec
+          [ ] settings:http://sulu.io/phpcr/settings
+          [ ] i18n:http://sulu.io/phpcr/locale
+          content node types:
+          [*] sulu:base
+          [*] sulu:path
+          [*] sulu:content
+          [*] sulu:snippet
+          [*] sulu:page
+          [*] sulu:home
+        sulu_core.webspace.document_manager.webspace_initializer
+          [+] homepage: [homepage] /cmf/sulu-hello-world/contents (en)
+          [+] route: /cmf/sulu-hello-world/routes/en (en)
+        sulu_snippet.document.snippet_initializer
+          [+] snippet path:: /cmf/snippets 
+          [+] snippet path:: /cmf/snippets 
+        sulu_custom_urls.initializer
+          Sulu Hello World Application:
+          [+] items path:: /cmf/sulu-hello-world/custom-urls/items 
+          [+] items path:: /cmf/sulu-hello-world/custom-urls/routes 
+        
+                * Legend: [+] Added [*] Updated [-] Purged [ ] No change
+        
+Target: phpcr_migrations
+
+Target: fixtures
+
+    doctrine:fixtures:load  ({"--no-interaction":true,"--append":true})
+    
+        
+           > loading App\DataFixtures\AppFixtures
+           > loading [2] Sulu\Bundle\ContactBundle\DataFixtures\ORM\LoadDefaultTypes
+           > loading [3] Sulu\Bundle\MediaBundle\DataFixtures\ORM\LoadCollectionTypes
+           > loading [4] Sulu\Bundle\MediaBundle\DataFixtures\ORM\LoadMediaTypes
+           > loading [5] Sulu\Bundle\SecurityBundle\DataFixtures\ORM\LoadSecurityTypes
+        
+    sulu:document:fixtures:load  ({"--no-interaction":true})
+    
+        Could not find any fixtures.
+        
+Target: user
+
+    sulu:security:role:create  ({"name":"User","system":"Sulu"})
+    
+        Created role "User" in system "Sulu".
+        
+        Created role "User" in system "Sulu"
+    sulu:security:user:create  ({"username":"admin","firstName":"Adam","lastName":"Ministrator","email":"admin@example.com","locale":"en","role":"User","password":"admin"})
+    
+        Created user "admin" in role "User"
+        
+        Created user "admin" with password "admin"
+Target: system_collections
+
+Target: dev
+
+    Done (40.87s)
+[piotr@piotr-pc sulu-hello-world]$ 
+```
