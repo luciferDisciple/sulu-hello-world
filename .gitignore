@@ -43,3 +43,5 @@ node_modules
 
 # System files
 .DS_Store
+
+translations/sulu/admin.*.json

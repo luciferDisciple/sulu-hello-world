@@ -250,3 +250,37 @@ Please review, edit and commit them: these files are yours.
 
 [piotr@piotr-pc Development]$ 
 ```
+
+## Translation of the Admin Interface
+
+https://docs.sulu.io/en/2.1/book/getting-started.html
+
+```
+[piotr@piotr-pc sulu-hello-world]$ bin/console sulu:admin:download-language
+
+                                                                                                                        
+ [WARNING] This command will be executed in the "admin" context. For the "website" context, run ./bin/websiteconsole    
+                                                                                                                        
+
+
+Language: en
+------------
+
+ ! [NOTE] Download skipped because Sulu includes a translation for the language "en" per default.                       
+
+
+Language: pl
+------------
+
+Starting download for the "sulu/sulu" project in "pl"
+Extract ZIP archive...
+
+ ----------- -------------- 
+  Package     Translations  
+ ----------- -------------- 
+  sulu/sulu   454           
+ ----------- -------------- 
+
+Writing language pl into translations folder
+[piotr@piotr-pc sulu-hello-world]$ 
+```
