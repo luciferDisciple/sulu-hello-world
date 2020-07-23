@@ -15,5 +15,55 @@
     </meta>
 
     <properties>
+        <property name="title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="pl">Nazwa</title>
+            </meta>
+	    </property>
+
+	    <property name="startDate" type="date">
+            <meta>
+                <title lang="en">Start Date</title>
+                <title lang="pl">Początek</title>
+            </meta>
+	    </property>
+
+	    <property name="end" type="date">
+            <meta>
+                <title lang="en">End Date</title>
+                <title lang="pl">Koniec</title>
+            </meta>
+	    </property>
+
+        <property name="url" type="resource_locator" mandatory="true">
+            <meta>
+                <title lang="en">Resourcelocator</title>
+                <title lang="de">Adresse</title>
+            </meta>
+
+            <tag name="sulu.rlp"/>
+        </property>
+
+        <property name="eventType" type="single_select">
+            <meta>
+                <title lang="en">Event Type</title>
+                <title lang="pl">Rodzaj Wydarzenia</title>
+            </meta>
+            <params>
+                <param name="concert">
+                    <meta>
+                        <title lang="en">Concert</title>
+                        <title lang="pl">Koncert</title>
+                    </meta>
+                </param>
+                <param name="festival">
+                    <meta>
+                        <title lang="en">Festival</title>
+                        <title lang="pl">Festiwal</title>
+                    </meta>
+                </param>
+            </params>
+	    </property>
     </properties>
 </template>

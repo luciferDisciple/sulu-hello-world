@@ -422,3 +422,66 @@ Target: dev
     Done (40.87s)
 [piotr@piotr-pc sulu-hello-world]$ 
 ```
+
+## Templates
+
+### Properties
+
+https://docs.sulu.io/en/2.1/book/templates.html#properties
+
+https://docs.sulu.io/en/2.1/reference/content-types/index.html
+
+```
+[piotr@piotr-pc sulu-hello-world]$ ./bin/adminconsole sulu:content:types:dump
+
+Symfony Container Services Tagged with "sulu.content.type" Tag
+==============================================================
+
+ ------------------------------------------------ --------------------------- ----------------------------------------------------------------- 
+  Service ID                                       alias                       Class name                                                       
+ ------------------------------------------------ --------------------------- ----------------------------------------------------------------- 
+  sulu.content.type.number                         number                      Sulu\Component\Content\Types\Number                              
+  sulu.content.type.single_page_selection          single_page_selection       Sulu\Bundle\PageBundle\Content\Types\SinglePageSelection         
+  sulu_route.content_type                          route                       Sulu\Bundle\RouteBundle\Content\Type\RouteContentType            
+  sulu_location.content.type.location              location                    Sulu\Bundle\LocationBundle\Content\Types\LocationContentType     
+  sulu_tag.content.type.tag_selection              tag_selection               Sulu\Bundle\TagBundle\Content\Types\TagSelection                 
+  sulu.content.type.single_select                  single_select               Sulu\Bundle\PageBundle\Content\Types\SingleSelect                
+  sulu.content.type.select                         select                      Sulu\Bundle\PageBundle\Content\Types\Select                      
+  sulu.content.type.checkbox                       checkbox                    Sulu\Bundle\PageBundle\Content\Types\Checkbox                    
+  sulu.content.type.color                          color                       Sulu\Bundle\PageBundle\Content\Types\Color                       
+  sulu.content.type.time                           time                        Sulu\Bundle\PageBundle\Content\Types\Time                        
+  sulu.content.type.date                           date                        Sulu\Bundle\PageBundle\Content\Types\Date                        
+  sulu.content.type.email                          email                       Sulu\Bundle\PageBundle\Content\Types\Email                       
+  sulu.content.type.url                            url                         Sulu\Bundle\PageBundle\Content\Types\Url                         
+  sulu.content.type.password                       password                    Sulu\Bundle\PageBundle\Content\Types\Password                    
+  sulu.content.type.phone                          phone                       Sulu\Bundle\PageBundle\Content\Types\Phone                       
+  sulu.content.type.page_selection                 page_selection              Sulu\Bundle\PageBundle\Content\Types\PageSelection               
+  sulu.content.type.text_line                      text_line                   Sulu\Component\Content\Types\TextLine                            
+  sulu_page.teaser.content_type                    teaser_selection            Sulu\Bundle\PageBundle\Teaser\TeaserContentType                  
+  sulu_page.smart_content.content_type             smart_content               Sulu\Component\SmartContent\ContentType                          
+  sulu_snippet.content.snippet                     snippet_selection           Sulu\Bundle\SnippetBundle\Content\SnippetContent                 
+  sulu_category.content.type.category_selection    category_selection          Sulu\Bundle\CategoryBundle\Content\Types\CategorySelection       
+  sulu_media.type.single_media_selection           single_media_selection      Sulu\Bundle\MediaBundle\Content\Types\SingleMediaSelection       
+  sulu_media.type.media_selection                  media_selection             Sulu\Bundle\MediaBundle\Content\Types\MediaSelectionContentType  
+  sulu_contact.content.single_account_selection    single_account_selection    Sulu\Bundle\ContactBundle\Content\Types\SingleAccountSelection   
+  sulu_contact.content.single_contact_selection    single_contact_selection    Sulu\Bundle\ContactBundle\Content\Types\SingleContactSelection   
+  sulu_contact.content.contact_account_selection   contact_account_selection   Sulu\Bundle\ContactBundle\Content\Types\ContactAccountSelection  
+  sulu.content.type.block                          block                       Sulu\Component\Content\Types\BlockContentType                    
+  sulu.content.type.resource_locator               resource_locator            Sulu\Component\Content\Types\ResourceLocator                     
+  sulu.content.type.text_editor                    text_editor                 Sulu\Component\Content\Types\TextEditor                          
+  sulu.content.type.text_area                      text_area                   Sulu\Component\Content\Types\TextLine                            
+  sulu_route.content_type.page_tree_route          page_tree_route             Sulu\Bundle\RouteBundle\Content\Type\PageTreeRouteContentType    
+ ------------------------------------------------ --------------------------- ----------------------------------------------------------------- 
+
+[piotr@piotr-pc sulu-hello-world]$ 
+```
+
+### Errors
+
+If you see no posts in Webspaces tab in Administrative Interface, not even
+the pages you know should be there, then you might have made error in one
+of `config/templates/pages/*.xml` files.
+
+![Pages not showing in Webspaces tab](readme-resources/no-pages-in-webspaces-error.png)
+
+You get no feedback that an `.xml` file was wrongly configured.
